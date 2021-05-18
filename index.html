@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="My portfolio website containing what I have done and what I can do.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <script src="js/common.js"></script>
+</head>
+
+<body>
+    <div class="nav" id="navbar">
+        <ul>
+            <li id="name"><a href="/"><b><span>Winston Lu</span></b></a></li>
+            <li id="item"><a onclick="scrollSmoothTo('footer')">Contact</a></li>
+            <li id="item"><a href="/projects">Projects</a></li>
+            <li id="item"><a onclick="scrollSmoothTo('skillScroll')">Skills</a></li>
+            <li id="item"><a onclick="scrollSmoothTo('aboutScroll')">About</a></li>
+            
+        </ul>
+    </div>
+
+    <div class="landing">
+        <div class="frame">
+            <div class="gradient"></div>
+            <img src="images/eda.jpg" id="background_image1" class="imgbg">
+            <img src="images/terminal.jpg" id="background_image2" class="imgbg">
+            <img src="images/code.jpg" id="background_image3" class="imgbg">
+            <img src="images/clock.jpeg" id="background_image4" class="imgbg"> 
+        </div>
+        <div class=landing_content>
+            <div class="intro">Hello, I'm Winston.</div>
+            <div class="main_text">
+                <span class="switching_text" id="pos0">I am a programmer</span>
+                <span class="switching_text" id="pos1">I am a cybersecurity analyst</span>
+                <span class="switching_text" id="pos2">I am a circuit designer</span>
+                <span class="switching_text" id="pos3">I am a person who likes DIY projects</span>
+            </div>
+        </div>
+    </div>
+
+  
+    <div id="aboutScroll">
+        <a id="about" style="display:block;position:relative;top:-50px;"></a>
+        <div class="whoami">
+            <div class="title_header">Who am I?</div>
+            <div class="line"></div>
+            <div class="card_container">
+                <div class="card_field">
+                    <div class="card_text">
+                        <h2>I really like electronics</h2>
+                        <p>I am an undergraduate student at the University of Waterloo studying computer engineering. I have a keen interest in both 
+                            hardware and software, and I have started several projects that develop my skills in these areas. I specialize in low level
+                            languages such as C++, but also Python 3 for prototypes and other object-oriented lanugages such as Java. I also play
+                            around with Kali Linux for cybersecurity, developing penetration testing skills to gain a better understanding of what it
+                            takes to defend against a cyberattack.
+                        </p>
+                    </div>
+                    <div class="card-img">
+                        <img src="images/pc.jpg" id="card_image">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="experience section">
+            <div class="title_header">Work Experience</div>
+            <div class="line"></div>
+            <div class="card_container">
+                <div class="card_field">
+                    <div class="card_text">
+                        <h2>Enterprise Security Co-op</h2>
+                        <div class="card_info">
+                            <div><h4>Gore Mutual Insurance</h4></div>
+                            <div style="text-align: right;"><h5>Jan 2021 - April 2021</h5></div>
+                        </div>
+                        <p>Developed PowerShell scripts to audit the Active Directory users and permissions, disabling terminated employees and revoking 
+                            excess permissions. I also investigated alerts in Microsoft Azure Sentinel, Office 365 Security, and Microsoft Cloud App Security, 
+                            to determining if any suspicious actions were done by the user or by an attacker who had gained user credentials. I assisted with 
+                            setting up group policies on corporate devices and managing risks for 3rd party vendors to reduce the severity of data breaches 
+                            when they happen.</p>
+                    </div>
+                    <div class="card-img">
+                        <img src="images/gore.jpg" id="card_image">
+                    </div>
+                </div>
+                <div style="height: 30px"></div>
+                <div class="card_field flex_rev">
+                    <div class="card_text">
+                        <h2>Computer Science Instructor</h2>
+                        <div class="card_info">
+                            <div><h4>Fun Up Academy</h4></div>
+                            <div style="text-align: right;"><h5>July 2020 - Present</h5></div>
+                        </div>
+                        <p>Introduced elementry and high school students in from ages 7-16 the basics of programming. Languages taught 
+                            include: Java, Python 3, and HTML5 with a brief overview of AngularJS. Concepts taught
+                            include using object-oriented programming to make games in PyGame (Python 3), algorithms in Java covered in 
+                            the AP CS A ciriculum, as well as a sandbox game in Java project using Swing.</p>
+                    </div>
+                    <div class="card-img">
+                        <img src="images/funup.jpg" id="card_image">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="skills section" id="skillScroll">
+            <a id="skills" style="display:block;position:relative;top:-50px;"></a>
+            <div class="title_header">Programming Languages</div>
+            <div class="line"></div>
+            <div class="card_container" >
+                <div class="card_field">
+                    <img src="/images/cpp.png"/ width=100>
+                    <div class="skills_text">
+                        <h3>C++</h3>
+                        <p>Used for more than 3 years for several open-source Arduino and ESP projects on my GitHub. My projects
+                            include a business card running Pong on an ATTiny85 and a FastLED clock websever running on an ESP8266.
+                        </p>
+                    </div>
+                </div>
+                <div class="card_field">
+                    <img src="/images/python.png"/ width=100>
+                    <div class="skills_text">
+                        <h3>Python 3</h3>
+                        <p>Used recreationally for over 5 years for quick prototyping, file formatting, web automation through Selenium, 
+                            web scanning using Requests, and teaching how to create games using PyGame. 
+                        </p>
+                    </div>
+                </div>
+                <div class="card_field">
+                    <img src="/images/java.png"/ width=100>
+                    <div class="skills_text">
+                        <h3>Java</h3>
+                        <p>Used academically and professionally for more than 4 years. Introduced and prepared Grade 8-11 students AP Computer 
+                            Science A concepts to prepare for the exam. 
+                        </p>
+                    </div>
+                </div>
+                <div class="card_field">
+                    <img src="/images/js.png"/ width=100>
+                    <div class="skills_text">
+                        <h3>JavaScript</h3>
+                        <p>Lightly used for 3 years to students the basic concept of web scripting and for games. I used libraries such as D3.js for a 
+                            hackathon that I learned and finished in than 24 hours as well as a basic AngularJS intro for web development.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="title_header">Defensive Information Security</div>
+            <div class="line"></div>
+            <div class="card_container">
+                <div class="card_field blueborder">
+                    <img src="/images/azure.png"/ width=100>
+                    <div class="skills_text">
+                        <h3>Microsoft Sentinel and Azure AD</h3>
+                        <p>Investigated alerts by crafting KQL queries to anaylze user activity logs in Azure AD by IP, location, sign-ins, 
+                            or other activities that can determine whether an alert is a true positive. Also automated closing of some alerts based on known 
+                            legitimate activity. 
+                        </p>
+                    </div>
+                </div>
+                <div class="card_field blueborder">
+                    <img src="/images/mcas.png"/ width=100>
+                    <div class="skills_text">
+                        <h3>Microsoft Cloud App Security</h3>
+                        <p>Investigated and closed cloud app alerts and assisted with provisioning cloud applications to restrict exfiltration of 
+                            confidential data without excessively affecting normal daily browsing.
+                        </p>
+                    </div>
+                </div>
+                <div class="card_field blueborder">
+                    <img src="/images/crowdstrike.png"/ width=100>
+                    <div class="skills_text">
+                        <h3>CrowdStrike Falcon</h3>
+                        <p>Investigated endpoint alerts and possible indications of compromise for hundreds of connected devices. If a possible 
+                            compromise is found, appropriate action was taken to quarantine the machine and notify the user about the ongoing actions.
+                        </p>
+                    </div>
+                </div>
+                <div class="card_field blueborder">
+                    <img src="/images/knowbe4.jpg"/ width=100>
+                    <div class="skills_text">
+                        <h3>KnowBe4 Training</h3>
+                        <p>Assisted with creating phishing tests and security training for all employees to improve endpoint security.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="title_header">Penetration Testing</div>
+            <div class="line"></div>
+            <div class="card_container">
+                <div class="card_field redborder">
+                    <img src="/images/kali.png"/ width=100>
+                    <div class="skills_text">
+                        <h3>Kali 2021.1</h3>
+                        <p>Used command line and GUI tools in Kali Linux to root boxes on HackTheBox.eu and TryHackMe.com. Other Linux distributions
+                            include Ubuntu, primarily through Windows Subsystem for Linux.
+                        </p>
+                    </div>
+                </div>
+                <div class="card_field redborder">
+                    <img src="/images/cli.png"/ width=100>
+                    <div class="skills_text">
+                        <h3>Reconnasance and Exploitation Tools</h3>
+                        <p>Nmap, Dirbister/Gobuster, Sqlmap, Nikto, Wireshark, Burp Suite, Python 3, Metasploit, Routersploit, Netcat, Hashcat, SearchSploit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="title_header">Other Software</div>
+            <div class="line"></div>
+            <div class="card_container" >
+                <div class="card_field whiteborder">
+                    <img src="/images/eagle.png"/ width=100>
+                    <div class="skills_text">
+                        <h3>Eagle</h3>
+                        <p>PCB design software I used to design a power distribution board for a Mars rover competition.
+                        </p>
+                    </div>
+                </div>
+                <div class="card_field whiteborder">
+                    <img src="/images/easyeda.png"/ width=100>
+                    <div class="skills_text">
+                        <h3>EasyEDA</h3>
+                        <p>Streamlined PCB design software I used to create <a href=""><u>my business card that is documented on my GitHub.</u></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="card_field whiteborder">
+                    <img src="/images/onshape.png"/ width=100>
+                    <div class="skills_text">
+                        <h3>OnShape</h3>
+                        <p>3D Design software I use to model for my 3D printer and to visualize component layouts.
+                        </p>
+                    </div>
+                </div>
+                <div class="card_field whiteborder">
+                    <img src="/images/vscode.png"/ width=100>
+                    <div class="skills_text">
+                        <h3>Visual Studio Code</h3>
+                        <p>Used for just about every coding project and for drafting LaTeX documents.
+                        </p>
+                    </div>
+                </div>
+                <!-- <div class="card_field whiteborder">
+                    <img src="/images/vim.png"/ width=100>
+                    <div class="skills_text">
+                        <h3>Vim</h3>
+                        <p>My go-to command line text editor. I also know how to exit Vim.
+                        </p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<footer class="footer" id="footer">
+    <div class="contact">
+        <div class="contact_card">
+            <img src="images/icons/mail.png" id="logo">
+            <div class="divider"></div>
+            <div class="content"><a href="mailto:wlu2268@gmail.com">Email me</a></div>
+        </div>
+        <div class="contact_card">
+            <img src="images/icons/git.png" id="logo">
+            <div class="divider"></div>
+            <div class="content"><a href="https://github.com/Winston-Lu" target="_blank">Github</a></div>
+        </div>
+        <div class="contact_card">
+            <img src="images/icons/linkedin.png" id="logo">
+            <div class="divider"></div>
+            <div class="content"><a href="https://www.linkedin.com/in/winstonlu1/" target="_blank">Linkedin</a></div>
+        </div>
+    </div>
+</footer>
+</html>

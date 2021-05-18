@@ -1,0 +1,168 @@
+.title{
+    padding-top: 50px;
+    text-align: center;
+}
+.title h1{
+    font-size: 50px;
+    margin: 50px;
+}
+
+
+:root{
+    --maxHeight: 1300px;
+}
+
+.projects{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    animation: fadein 1s linear;
+    overflow-x: hidden;
+    align-items: center;
+}
+
+@keyframes fadein {
+    0% {max-height: 100vh; opacity: 0;}
+    50% {max-height: 100vh; opacity: 0;}
+    100% {display: flex; opacity: 1;}
+}
+
+label:hover{
+    cursor: pointer;
+}
+
+.visually-hidden {
+    position: absolute;
+    left: -100vw;
+}
+
+
+.box { /*default*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: white;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    font-size: 100px;
+    overflow-y: hidden;
+    width: 60vw;
+    min-width: 450px;
+    min-height: 80px;
+    max-height: 8vh;
+}
+
+.box-preview{
+    height: 8vh;
+    min-height: inherit;
+    width: 100%;
+    background-color: #222;
+    overflow: hidden;
+}
+.box-body{
+    color: black;
+    display: inline;
+    font-size: 15px;
+    margin: 10px 20px 40px 20px;
+    font-size: 15px;
+}
+
+.checkbox:checked + label > .box { /*Show*/
+    animation: expand 0.5s ease-in-out;
+    max-height: var(--maxHeight);
+}
+
+.checkbox:not(:checked) + label > .box { /*Hide*/
+    animation: contract 0.5s ease-in-out;
+}
+
+@keyframes expand {
+    0% {max-height: 8vh;}
+    100% {max-height: var(--maxHeight);}
+}
+@keyframes contract {
+    0% {max-height: var(--maxHeight);}
+    100% {max-height: 8vh;}
+}
+
+
+.preview-image{
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    height: 9vh;
+    min-height: inherit;
+}
+.preview-gradient{
+    position: absolute;
+    background-image: linear-gradient(to top, rgba(34,34,34,0.9), rgba(34,34,34,0.7), rgba(0,0,0,0.3));
+    height: max(16vh, 160px);
+    width: 100%;
+}
+.preview-gradient:hover{
+    animation: gradient-hide 0.2s linear;
+    background-position-y: 0vh;
+}
+.preview-gradient:not(:hover){
+    animation: gradient-show 0.2s linear;
+    background-position-y: min(-8vh, -80px);
+}
+.checkbox:checked + label .preview-gradient { /*Show*/
+    background-position-y: 0vh !important;
+    animation: none !important;
+}
+
+@keyframes gradient-show {
+    0%{background-position-y: 0vh;}
+    100%{background-position-y: min(-8vh, -80px);}
+}
+@keyframes gradient-hide {
+    0%{background-position-y: min(-8vh, -80px);}
+    100%{background-position-y: 0vh;}
+}
+
+.repeat-image{
+    height: 8vh;
+    min-height: inherit;
+    width: 100%;
+    background-repeat: repeat;
+    background-position: center;
+    background-size: 100% max(8vh, 80px); /*x size should be pre-defined*/
+    
+}
+
+.preview-text{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    height: max(8vh, 80px);
+    font-size: 1.5rem;
+    z-index: 1;
+    margin: 10px 30px;
+    font-family: 'Nunito', Roboto;
+    font-weight: 600;
+}
+.box-body img{
+    width: 80%;
+    padding-left: 10%;
+}
+
+.box-body a{
+    text-decoration: none;
+    font-weight: 800;
+    color: rgb(5, 82, 176);
+    font-family: 'Nunito', Roboto;
+    font-weight: 900;
+}
+h4{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Nunito', Roboto;
+    font-weight: 600;
+    font-size: 30px;
+}
+p{
+    margin-top: 5px;
+    font-family: 'Nunito', Roboto;
+    font-weight: 400;
+}
