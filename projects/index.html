@@ -19,12 +19,83 @@
     </div>
     <div class="title"><h1>My Projects</h1></div>
     <div class="projects">
-        <!-- Ideas
-        List of elements, 1 wide, kinda like rectangles
-        Name and short description, has a little thumbnail image
-        On hover, a wider image gradient appears
-        -->
-        
+
+    <section class="accordion">
+        <input type="checkbox" name="collapse" id="handle0">
+        <div class="handle">
+            <label for="handle0">
+                <div class="preview-text">
+                    <p>Custom Electric Longboards</p>
+                </div>
+                <div class="preview-gradient"></div>
+                <div style="background-image: url(/images/projects/longboardbanner.jpeg); background-size: 600px;" class="repeat-image"></div>
+            </label>
+        </div>
+        <div class="content">
+            <img src="/images/projects/longboard.jpg">
+            <img src="/images/projects/longboardbanner.jpeg">
+            <h4>Overview</h4>
+            <p>A purpose-designed longboard sourcing parts and assembling electronics together to create 2 custom electric longboards 
+                for less than $650 CAD each including shipping with plenty of battery capacity
+                </p>
+            <h4>Programs Used</h4>
+            <p>Onshape, Cura</p>
+            <h4>Design Decisions</h4>
+            <p>Living about a 30-minute walk from school, I wanted a convenient way to get to school that is more reliable than taking 
+                the bus. A bike would be a hassle to bring around and lock up as I wasn't sure about how safe my new school would be, 
+                and any other electric scooters/longboards were quite expensive at around $1000 USD for a decent option that could be 
+                used for grocheries going uphill. I decided to make a longboard, which would be lighter and more portable than a scooter,
+                plus I have seen previous videos of people creating their own. I wanted something that would be powerful enough to do a 
+                decent amount of uphill, have as much mileage as most other products on the market, and have a easily hot-swappable 
+                battery system for future expansion. I wanted it to also be used in the rain, so water resistance would be important.
+            </p>
+            <h4>Sourcing Parts</h4>
+            <p>I began sourcing the parts for my board. I sourced some standard hub wheels, but I also got some 
+                rubber wheels for the rain thats not factored into the $650 total above, but I figured it'd be useful when the time 
+                came for it. The parts took about a month to arrive where I would mount the $200 wheels, $80 electronic speed controller
+                (ESC) and remote combo, some risers, $100 worth of 21700 instead of 18650 batteries for extra capacity and 2 battery 
+                management systems (BMS) for each of the battery packs onto a entry-level $100 longboard. This was after I spent about 3 months 
+                wondering why my original battery pack didn't arrive due to customs issues, so I had to resort to building my own battery pack.
+            </p>
+            <h4>Design Iterations</h4>
+            <p> I 3D printed every custom component of my board, from the battery housing to controller housing to mud cover mounts. A 
+                few components went through several iterations: The battery locking mount and the controller housing. Since I was using 
+                this board in the rain, quite a bit of mud would get into the mechanical components of the lock, which would prevent 
+                it from unlocking. I decided to go with a simple spring-operated slide mechanism instead of a more complex and delicate
+                solution involving a v-shaped rail to translate vertical to equal horizontal motion. The controller housing and battery box 
+                was originally one large box, but after the original battery failed to ship, I made them seperate modules. I initially 
+                went with hot glue to seal the wires in, but eventually switched to grommets for better reliability and maintenance. I 
+                also switched from PLA to PETG for better durability as the mounting holes on the box were breaking off easily. I also 
+                had to change designs completely from a cup design to a fully enclosed box, as water was seeping in from the sides due 
+                to inadequate water sealing. The power switch and battery indicators were mounted on the rear wheels, but due to shorter
+                wire lengths, had some trouble and after some wear-and-tear, the wires broke. The board didn't need those parts as it 
+                would turn off automatically and turn on when pushed in addition to the remote having a battery indicator for the board 
+                as well.
+            </p>
+            <h4>Failures</h4>
+            <p> During a ride in light snow, one of the rubber wheels shorted the ESC MOSFETs, causing one of the MOSFETs to blow up 
+                and turn into an expensive smoke machine. That destroyed a $80 controller and one of the $200 pair of hub motors. I 
+                also had an XT60 connector for the batteries, but corrosion commonly affected its performance so I switched to 
+                deutsch automotive connectors for its current rating and water resistance. Corrosion was a big factor in a lot of 
+                design problems, so I began moving away from steel hardware to stainless steel nuts, bolts, and screws. Fortunately,
+                one of the components yet to fail is the battery, as the only repair I had to make was to re-solder one of the BMS
+                balance charge leads that likely fell off due to vibration and repair one of the nickel strips connecting the battery 
+                cells that burned off likely from corrosion and the high-current power draw.
+            </p>
+            <h4>Afterthoughts</h4>
+            <p>After using this for a year, there were a lot of design changes I had to make but has served me well in getting me 
+                to school and for making shopping trips a lot easier. A friend of mine also wanted one, so I helped design and 
+                build another longboard for him, except I realized that the batteries I got for them were not rated for high discharge,
+                which meant any trips uphill, even at a 5 degree incline, caused the board to stall within a few seconds. Things I 
+                would change for next time are better wheels since polyurethane wheels dont ride smoothly on sidewalks or broken
+                roads, better water-resistance designs, and maybe a battery system rated for more cycles.
+            </p>
+            <a href="https://cad.onshape.com/documents/801400645b96d78082cc51aa/w/173caac708e02bfee2eb73ed/e/24fe7e8d6a93a15342eedbcc?renderMode=0&uiState=636177acc23ac067da3b5bdc" target="_blank" rel="noopener">Link to the CAD files</a>
+            <br>
+            <a href="https://cad.onshape.com/documents/24dfb5957f568ed274d6f457/w/05c974b12007cf15319488c9/e/893bdd46711037b99f6ad36b?renderMode=0&uiState=636177fe933dde07bce19515" target="_blank" rel="noopener">Link to locking latch CAD files</a>
+            <br><br>
+        </div>
+    </section>    
     <section class="accordion">
         <input type="checkbox" name="collapse" id="handle1">
         <div class="handle">
