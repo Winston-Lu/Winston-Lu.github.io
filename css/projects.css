@@ -7,18 +7,22 @@
     margin: 50px;
 }
 
-
 :root{
     --maxHeight: 1300px;
 }
+
+/* *{
+    border: red solid 1px;
+} */
 
 .projects{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     animation: fadein 1s linear;
-    overflow-x: hidden;
+    overflow: hidden;
     align-items: center;
+    padding: 0 20vw 0 20vw;
 }
 
 @keyframes fadein {
@@ -31,72 +35,86 @@ label:hover{
     cursor: pointer;
 }
 
-.visually-hidden {
-    position: absolute;
-    left: -100vw;
-}
-
-
-.box { /*default*/
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    background-color: white;
-    margin-bottom: 10px;
-    border-radius: 15px;
-    font-size: 100px;
-    overflow-y: hidden;
-    width: 60vw;
-    min-width: 450px;
-    min-height: 80px;
-    max-height: 8vh;
-}
-
-.box-preview{
-    height: 8vh;
-    min-height: inherit;
+.accordion {
     width: 100%;
-    background-color: #222;
-    overflow: hidden;
+    margin-bottom: 40px;
 }
-.box-body{
+
+.accordion > input[name="collapse"] {
+    display: none;
+}
+  
+.accordion label{
+    width: 100%;
+}
+  
+.accordion .content {
+    background: #fff;
     color: black;
-    display: inline;
     font-size: 15px;
-    margin: 10px 20px 40px 20px;
-    font-size: 15px;
-}
-
-.checkbox:checked + label > .box { /*Show*/
-    animation: expand 0.5s ease-in-out;
-    max-height: var(--maxHeight);
-}
-
-.checkbox:not(:checked) + label > .box { /*Hide*/
-    animation: contract 0.5s ease-in-out;
-}
-
-@keyframes expand {
-    0% {max-height: 8vh;}
-    100% {max-height: var(--maxHeight);}
-}
-@keyframes contract {
-    0% {max-height: var(--maxHeight);}
-    100% {max-height: 8vh;}
-}
-
-
-.preview-image{
-    position: relative;
     overflow: hidden;
-    display: flex;
-    height: 9vh;
-    min-height: inherit;
+    max-height: 0;
+    transition: 0.5s;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 0 10px 0 10px;
+    margin-top: -30px;
 }
+
+.accordion .content a {
+    text-decoration: none;
+    font-weight: 800;
+    color: rgb(5, 82, 176);
+    font-family: 'Nunito', Roboto;
+    font-weight: 900;
+}
+
+.accordion .content img {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.accordion > input[name="collapse"]:checked ~ .content {
+    max-height: var(--maxHeight);
+    transition: max-height 0.5s;
+}
+
+.accordion label {
+    display: block;
+}
+
+  
+/* For Desktop */
+@media only screen and (min-width: 620px){
+    .accordion > input[name="collapse"]:checked ~ .content {
+        max-height: var(--maxHeight);
+    }
+}
+
+.accordion > input[name="collapse"]:checked ~ .content {
+    border-top: 0;
+    transition: 0.3s;
+}
+
+.accordion .handle {
+    margin: 0;
+}
+  
+  /* Card CSS */
+.accordion label {
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    height: 9vh;
+    overflow: hidden;
+    border-radius: 15px;
+    position: relative;
+}
+
+
 .preview-gradient{
     position: absolute;
     background-image: linear-gradient(to top, rgba(34,34,34,0.9), rgba(34,34,34,0.7), rgba(0,0,0,0.3));
-    height: max(16vh, 160px);
+    height: 19vh;
     width: 100%;
 }
 .preview-gradient:hover{
@@ -105,30 +123,29 @@ label:hover{
 }
 .preview-gradient:not(:hover){
     animation: gradient-show 0.2s linear;
-    background-position-y: min(-8vh, -80px);
+    background-position-y: min(-9vh, -80px);
 }
-.checkbox:checked + label .preview-gradient { /*Show*/
+.checkbox:checked + label .preview-gradient { 
     background-position-y: 0vh !important;
     animation: none !important;
 }
 
 @keyframes gradient-show {
     0%{background-position-y: 0vh;}
-    100%{background-position-y: min(-8vh, -80px);}
+    100%{background-position-y: min(-9vh, -80px);}
 }
 @keyframes gradient-hide {
-    0%{background-position-y: min(-8vh, -80px);}
+    0%{background-position-y: min(-9vh, -80px);}
     100%{background-position-y: 0vh;}
 }
 
 .repeat-image{
-    height: 8vh;
+    height: 9vh;
     min-height: inherit;
     width: 100%;
     background-repeat: repeat;
     background-position: center;
-    background-size: 100% max(8vh, 80px); /*x size should be pre-defined*/
-    
+    background-size: 100% max(9vh, 80px); /*x size should be pre-defined*/
 }
 
 .preview-text{
@@ -147,13 +164,6 @@ label:hover{
     padding-left: 10%;
 }
 
-.box-body a{
-    text-decoration: none;
-    font-weight: 800;
-    color: rgb(5, 82, 176);
-    font-family: 'Nunito', Roboto;
-    font-weight: 900;
-}
 h4{
     margin: 0px;
     padding: 0px;
