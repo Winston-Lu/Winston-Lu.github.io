@@ -1,7 +1,7 @@
 # Winston-Lu.github.io
 [Personal Portfolio](https://winston-lu.github.io)
 
-## 3D Model Workflow
+## 3D Model Contour Workflow
 1. Download a 3D model (Preferably STL)
 2. [Compress number of verticies here.](https://3dless.com/). Preferably have a total of less than 15k
 3. [Convert STL to GLB](https://imagetostl.com/convert/file/stl/to/glb)
