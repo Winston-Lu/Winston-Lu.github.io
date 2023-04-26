@@ -22,7 +22,11 @@ let darkMaterial;
 
 //----------------------------------------------------------------- BASIC parameters
 let onMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-let renderer = new THREE.WebGLRenderer({antialias:true});
+let canvasElement = document.querySelectorAll("canvas")[0];
+let renderer = new THREE.WebGLRenderer({
+  canvas: canvasElement,
+  antialias:true
+});
 renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setPixelRatio( window.devicePixelRatio );
 
@@ -31,8 +35,6 @@ if (window.innerWidth > 800) {
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.shadowMap.needsUpdate = true;
 };
-
-document.body.appendChild( renderer.domElement );
 
 window.addEventListener('resize', onWindowResize, false);
 function onWindowResize() {
@@ -54,7 +56,7 @@ let town = new THREE.Object3D();
 let setcolor = onMobile ? 0x020A12 : 0x040913;
 
 scene.background = new THREE.Color(setcolor);
-scene.fog = new THREE.Fog(setcolor, 3, 19);
+scene.fog = new THREE.Fog(setcolor, 3, 22);
 //returns random range from (-num, num)
 function mathRandom(num = 8) {
   let numValue = - Math.random() * num + Math.random() * num;
@@ -192,7 +194,7 @@ function init() {
   const renderScene = new RenderPass( scene, camera );
   const bloomPass = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85 );
   bloomPass.threshold = 0.05;
-  bloomPass.strength = 3.5;
+  bloomPass.strength = 3;
   bloomPass.radius = 0.8;
 
   bloomComposer = new EffectComposer( renderer );
@@ -270,7 +272,7 @@ window.addEventListener('touchmove', onDocumentTouchMove, false );
 
 //Scene elements
 let ambientLight = new THREE.AmbientLight(0xFFFFFF, 4);
-let lightFront = new THREE.SpotLight(0xAA3333, 20, 5);
+let lightFront = new THREE.SpotLight(0x1A1313, 20, 10000);
 
 lightFront.rotation.x = 45 * Math.PI / 180;
 lightFront.rotation.z = -45 * Math.PI / 180;
@@ -324,11 +326,12 @@ let animate = function() {
   let distance = Math.max(Math.min(((mouse.x * 8) - camera.rotation.y) * uSpeed, 0.001),-0.001); //clamp speed for mobile
   if(distance == 0) distance = 0.0005
   city.rotation.y -= distance;
-  city.rotation.x -= 0; //(-(mouse.y * 2) - camera.rotation.x) * uSpeed; //slower up/down panning
+  let vertSpeed = (-(mouse.y * 2) - camera.rotation.x) * uSpeed;
+  city.rotation.x -=  Math.min(uSpeed, Math.max(vertSpeed, -uSpeed));//slower up/down panning
 
   //prevent clipping past plane and flipping upside down (if vertical panning enabled)
-  city.rotation.x = Math.max(-0.5,city.rotation.x);
-  city.rotation.x = Math.min(0.7,city.rotation.x);
+  city.rotation.x = Math.max(-0.15,city.rotation.x);
+  city.rotation.x = Math.min(0.15,city.rotation.x);
   
   smoke.rotation.y += 0.01;
   smoke.rotation.x += 0.01;

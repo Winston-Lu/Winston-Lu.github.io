@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/css/main.css">
     <script type="module" src="/src/common.js"></script>
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <script src="/src/three/src/gsap.min.js"></script>
+    <script type="module" src="/src/three/src/background.js"></script>
 </head>
 
 <body>
@@ -35,7 +37,7 @@
     </nav>
     <!-- Background landing page -->
     <div class="topbackground">
-        <iframe loading="lazy" class="fullSize" src="/src/three/background.html" scrolling="no" onload="this.style.opacity = '1'"></iframe>
+        <canvas class="background" class="fullSize mainBackground" onload="this.style.opacity = '1'"></canvas>
         <div class="topoverlay">
             <div class="overlaytext">
                 <h1>Hello There!</h1>
@@ -234,10 +236,10 @@
 </body>
 <script type="module">
 import { ObjectPreviewer } from "/src/three/src/ObjectPreview.js";
-let rp0   = new ObjectPreviewer("/src/three/models/rpi0.glb",    0.21,0,[0,-0.005,0],[Math.PI/10,0,0],[-7.5,0,4]);
-let key   = new ObjectPreviewer("/src/three/models/keyboard.glb",50,  1,[0,-0.005,0],[Math.PI/8,0,0],[0,0,0]);
-let pcb   = new ObjectPreviewer("/src/three/models/pcb.glb",     0.12,2,[0,-0.005,0],[3*Math.PI/5,0,0],[0,0,0]);
-let print = new ObjectPreviewer("/src/three/models/printer.glb", 0.15,3,[0,-0.005,0],[0,0,0],[0,0,0]);
-let pwn   = new ObjectPreviewer("/src/three/models/flipper.glb", 0.1, 4,[0,-0.005,0],[0,0,-Math.PI/6],[0,0,0]);
+let rp0   = new ObjectPreviewer("/src/three/models/rpi0.glb",    0.21,1,[0,-0.005,0],[Math.PI/10,0,0],[-7.5,0,4]);
+let key   = new ObjectPreviewer("/src/three/models/keyboard.glb",50,  2,[0,-0.005,0],[Math.PI/8,0,0],[0,0,0]);
+let pcb   = new ObjectPreviewer("/src/three/models/pcb.glb",     0.12,3,[0,-0.005,0],[3*Math.PI/5,0,0],[0,0,0]);
+let print = new ObjectPreviewer("/src/three/models/printer.glb", 0.15,4,[0,-0.005,0],[0,0,0],[0,0,0]);
+let pwn   = new ObjectPreviewer("/src/three/models/flipper.glb", 0.1, 5,[0,-0.005,0],[0,0,-Math.PI/6],[0,0,0]);
 </script>
 </html>

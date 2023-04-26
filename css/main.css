@@ -1,4 +1,4 @@
-iframe {
+.mainBackground {
     position: relative;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -68,6 +68,18 @@ canvas {
 }
 .overlaytext h5{
     font-weight: 200;
+}
+
+h4 > a{
+    transition: text-shadow 0.2s;
+}
+
+h4 > a:hover{
+    text-shadow:
+        -3px -3px 3px #48C,
+        3px -3px 3px #48C,
+        -3px 3px 3px #48C,
+        3px 3px 3px #48C
 }
 
 .card {
