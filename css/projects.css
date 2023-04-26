@@ -1,19 +1,19 @@
-.title{
-    padding-top: 50px;
-    text-align: center;
+canvas{
+    position: fixed;
+    width: 100vw; 
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+    z-index: -10;
 }
-.title h1{
-    font-size: 50px;
-    margin: 50px;
+.title{
+    padding-top: 100px;
+    text-align: center;
 }
 
 :root{
     --maxHeight: 4000px;
 }
-
-/* *{
-    border: red solid 1px;
-} */
 
 .projects{
     display: flex;
@@ -24,6 +24,23 @@
     align-items: center;
     padding: 0 20vw 0 20vw;
 }
+
+@media screen and (min-width: 1201px) {
+    .projects{
+        padding: 0 20vw 0 20vw;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+@media screen and (max-width: 1200px) {
+    .projects{
+        padding: 0 0 0 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: min(90vw, 700px);
+    }
+}
+
 
 @keyframes fadein {
     0% {max-height: 100vh; opacity: 0;}
@@ -64,7 +81,6 @@ label:hover{
     text-decoration: none;
     font-weight: 800;
     color: rgb(5, 82, 176);
-    font-family: 'Nunito', Roboto;
     font-weight: 900;
 }
 
@@ -110,7 +126,6 @@ label:hover{
     position: relative;
 }
 
-
 .preview-gradient{
     position: absolute;
     background-image: linear-gradient(to top, rgba(34,34,34,0.9), rgba(34,34,34,0.7), rgba(0,0,0,0.3));
@@ -123,7 +138,7 @@ label:hover{
 }
 .preview-gradient:not(:hover){
     animation: gradient-show 0.2s linear;
-    background-position-y: min(-9vh, -80px);
+    background-position-y: -9vh;
 }
 .checkbox:checked + label .preview-gradient { 
     background-position-y: 0vh !important;
@@ -152,27 +167,19 @@ label:hover{
     position: absolute;
     display: flex;
     align-items: center;
-    height: max(8vh, 80px);
-    font-size: 1.5rem;
+    font-size: max(1.2rem,0.8vh);
+    width: 100%;
     z-index: 1;
-    margin: 10px 30px;
-    font-family: 'Nunito', Roboto;
+    height: inherit;
     font-weight: 600;
+    pointer-events: none;
 }
+ .preview-text p{
+    margin-left: 30px;
+ }
+
 .box-body img{
     width: 80%;
     padding-left: 10%;
 }
 
-h4{
-    margin: 0px;
-    padding: 0px;
-    font-family: 'Nunito', Roboto;
-    font-weight: 600;
-    font-size: 30px;
-}
-p{
-    margin-top: 5px;
-    font-family: 'Nunito', Roboto;
-    font-weight: 400;
-}

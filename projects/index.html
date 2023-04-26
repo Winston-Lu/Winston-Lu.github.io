@@ -2,24 +2,84 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My portfolio website containing what I have done and what I can do.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/projects.css">
-    <script src="/js/common.js"></script>
+    <script type="module" src="/src/common.js"></script>
+    <script type="module" src="/src/three/src/nebula.js"></script>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
 </head>
-<body>
-    <div class="nav" id="navbar">
-        <ul>
-            <li id="name"><a href="/"><b><span>Winston Lu</span></b></a></li>
-            <li id="item"><a onclick="scrollSmoothTo('footer')">Contact</a></li>
-            <li id="item"><a href="/projects">Projects</a></li>
-            <li id="item"><a href="/#skills">Skills</a></li>
-            <li id="item"><a href="/#about">About</a></li>
-        </ul>
-    </div>
-    <div class="title"><h1>My Projects</h1></div>
-    <div class="projects">
 
+<body>
+    <canvas></canvas>
+    <nav class="navbar" id="navbar">
+        <div class="logo" id="logo">:^)</div>
+        <ul class="nav-links">
+            <!-- Hamburger Toggle -->
+            <input type="checkbox" id="checkbox_toggle" />
+            <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+            <!-- Nav Menu -->
+            <div class="menu">
+            <li><a href="/">Home</a></li>
+            <li class="dropdownItem">
+                <a id="about_scroll">About</a>
+                <ul class="dropdown">
+                <li><a href="/#about" id="summary_scroll">Short Intro</a></li>
+                <li><a href="/#skills" id="skills_scroll">Skills</a></li>
+                </ul>
+            </li>
+            <li><a href="/#experience" id="exp_scroll">Experience</a></li>
+            <li><a id="top_scroll">Projects</a></li>
+            <li><a id="footer">Contact</a></li>
+            </div>
+        </ul>
+    </nav>
+    <div class="title"></div>
+    <div class="projects">
+    <section class="accordion">
+        <input type="checkbox" name="collapse" id="handle1">
+        <div class="handle">
+            <label for="handle1">
+                <div class="preview-text">
+                    <p>Pong Business Card</p>
+                </div>
+                <div class="preview-gradient"></div>
+                <div style="background-image: url(/images/projects/cardbanner.jpeg); background-size: 600px;" class="repeat-image"></div>
+            </label>
+        </div>
+        <div class="content">
+            <img src="/images/projects/card.jpg">
+            <h4>Overview</h4>
+            <p>A custom-designed and programmed card based on the ATTiny85 microprocessor capable of running basic programs in C++,
+                powered by a 3v CR2032 battery. Code and technical documentation is in my Github.
+                </p>
+            <h4>Programs and Libraries Used</h4>
+            <p>EasyEDA, Arduino IDE (C++) using ssd1306</p>
+            <h4>Summary</h4>
+            <p>This was my first PCB design I have created. Based on the ATTiny85-20SU with 8kB of program storage and 512B
+                of SRAM, I planned on making a unique business card that I could give out to show my skills in hardware and
+                software design, while still being configurable in the future. I first ran into a problem with library
+                compatibility, as the library I originally planned on using [Tinky4kOLED] did not work, so I had to find
+                different lightweight libraries to get it to work. I also had a restriction of 3 analog IO pins and 2 digital
+                pins. 2 of the analog pins were used by the I2C bus for the OLED, leaving me with 3 IO pins for 4 buttons. I
+                decided to use one of the analog pins as a button-based voltage divider, which came with its own set of problems
+                such as needing to calibrate each card individually due to different tolerances in manufacturing. The last 2
+                digital pins were used for LED's. After creating a schematic based on a working breadboard prototype, I ordered
+                5 boards to test the quality of the PCB fabrication and SMD assembly, which came out as expected. After soldering
+                the rest of the SMD components and the through-hole components, the sketch and calibration went smoothly, and
+                produced a card that I am proud of creating and handing out to those I'm interested in networking with.
+            </p>
+            <h4>Afterthoughts</h4>
+            <p>After ordering my first batch, I optimized the traces to make the PCB look more visually appealing.
+                    Ordering additional SSD1306 displays also showed me that the reset button was not necessary, and I had
+                    originally received a faulty batch. I only ordered 5 PCB's originally for testing, but now I know that
+                    the design works, I plan on using black PCB's and doing some SMD soldering myself.
+            </p>
+            <a href="https://github.com/Winston-Lu/ATTiny85_Pong" target="_blank" rel="noopener">Link to the code repository</a>
+            <br><br>
+        </div>
+    </section>
     <section class="accordion">
         <input type="checkbox" name="collapse" id="handle0">
         <div class="handle">
@@ -95,47 +155,79 @@
             <a href="https://cad.onshape.com/documents/24dfb5957f568ed274d6f457/w/05c974b12007cf15319488c9/e/893bdd46711037b99f6ad36b?renderMode=0&uiState=636177fe933dde07bce19515" target="_blank" rel="noopener">Link to locking latch CAD files</a>
             <br><br>
         </div>
-    </section>    
+    </section>   
     <section class="accordion">
-        <input type="checkbox" name="collapse" id="handle1">
+        <input type="checkbox" name="collapse" id="handle4">
         <div class="handle">
-            <label for="handle1">
+            <label for="handle4">
                 <div class="preview-text">
-                    <p>Pong Business Card</p>
+                    <p>3D Printed Shelf Clock</p>
                 </div>
                 <div class="preview-gradient"></div>
-                <div style="background-image: url(/images/projects/cardbanner.jpeg); background-size: 600px;" class="repeat-image"></div>
+                <div style="background-image: url(/images/projects/clockbanner.jpeg); background-size: 1200px;" class="repeat-image"></div>
             </label>
         </div>
         <div class="content">
-            <img src="/images/projects/card.jpg">
+            <img src="/images/projects/clock.jpeg">
             <h4>Overview</h4>
-            <p>A custom-designed and programmed card based on the ATTiny85 microprocessor capable of running basic programs in C++,
-                powered by a 3v CR2032 battery. Code and technical documentation is in my Github.
-                </p>
+            <p>A 3D printed shelving unit with RGB LED's for time</p>
             <h4>Programs and Libraries Used</h4>
-            <p>EasyEDA, Arduino IDE (C++) using ssd1306</p>
+            <p>Arduino IDE (C++) using FastLED and ESP8266 Wireless Libraries</p>
             <h4>Summary</h4>
-            <p>This was my first PCB design I have created. Based on the ATTiny85-20SU with 8kB of program storage and 512B
-                of SRAM, I planned on making a unique business card that I could give out to show my skills in hardware and
-                software design, while still being configurable in the future. I first ran into a problem with library
-                compatibility, as the library I originally planned on using [Tinky4kOLED] did not work, so I had to find
-                different lightweight libraries to get it to work. I also had a restriction of 3 analog IO pins and 2 digital
-                pins. 2 of the analog pins were used by the I2C bus for the OLED, leaving me with 3 IO pins for 4 buttons. I
-                decided to use one of the analog pins as a button-based voltage divider, which came with its own set of problems
-                such as needing to calibrate each card individually due to different tolerances in manufacturing. The last 2
-                digital pins were used for LED's. After creating a schematic based on a working breadboard prototype, I ordered
-                5 boards to test the quality of the PCB fabrication and SMD assembly, which came out as expected. After soldering
-                the rest of the SMD components and the through-hole components, the sketch and calibration went smoothly, and
-                produced a card that I am proud of creating and handing out to those I'm interested in networking with.
+            <p>A version of another project created by DIYMachines on Youtube that I altered to support more lighting effects and
+                customization. Hardware-wise, this project is quite similar as they use the same 3D STL files, but the software has
+                been created from scratch to support web-server control. I programmed multiple lighting effects that the original
+                project did not include such as solid segments, gradients, fire, rain, and rainbow, with these effects also applying
+                to the spotlights, background, and clock. In the image above, I applied a blue to purple background with a solid clock
+                and spotlight pattern. More pictures are available in my GitHub repository below
             </p>
             <h4>Afterthoughts</h4>
-            <p>After ordering my first batch, I optimized the traces to make the PCB look more visually appealing.
-                    Ordering additional SSD1306 displays also showed me that the reset button was not necessary, and I had
-                    originally received a faulty batch. I only ordered 5 PCB's originally for testing, but now I know that
-                    the design works, I plan on using black PCB's and doing some SMD soldering myself.
+            <p>Many of the drilled holes in this project are not aligned properly, so there had to be a few modifications to remediate
+                this. I am also running this clock on 12v, with a buck converter stepping down the voltage to 5v. Under normal operations,
+                this won't be an issue, but if I fully load the shelf with solid white LED's, this would heat up the buck converters to
+                more than 90 degrees celsius with a heatsink on, so I added more buck converters to share the load. I would have gone
+                with a dedicated LED power supply instead, but concealing that would be much more difficult.
             </p>
-            <a href="https://github.com/Winston-Lu/ATTiny85_Pong" target="_blank" rel="noopener">Link to the code repository</a>
+            <a href="https://github.com/Winston-Lu/ESP8266-LED-Shelf" target="_blank" rel="noopener">Link to the code repository</a>
+            <br><br>
+        </div>
+    </section>
+    <section class="accordion">
+        <input type="checkbox" name="collapse" id="handle11">
+        <div class="handle">
+            <label for="handle11">
+                <div class="preview-text">
+                    <p>Portable AC Power Bank</p>
+                </div>
+                <div class="preview-gradient"></div>
+                <div style="background-image: url(/images/projects/powerbankbanner.jpg); background-size: 1200px;" class="repeat-image"></div>
+            </label>
+        </div>
+        <div class="content">
+            <img src="/images/projects/powerbank.jpg">
+            <h4>Overview</h4>
+            <p>A 272Wh portable power bank capable of delivering up to 1.5A 120v AC</p>
+            <h4>Programs and Libraries Used</h4>
+            <p>OnShape</p>
+            <h4>Summary</h4>
+            <p> With a bunch of spare 18650 lithium battery cells, I wanted to create something that would see more use 
+                than behing a shelf ornament. Most USB power banks won't make use of 20+ battery cells, so I decided 
+                to instead make a power bank, but to power an AC inverter. I made use of an automotive inverter 
+                and some additional electronics such as a battery management system, left over charge ports, high 
+                power flip switches, and a battery level indicator to design and build a portable power bank. I made 
+                the battery pack and soldered the electronics, then measured out the dimensions to make a custom case 
+                to fit all the electronics. Eventually, I was able to create what you see above, which can power my 
+                laptop charger if I needed the extra battery life.
+            </p>
+            <h4>Afterthoughts</h4>
+            <p>The USB charge ports on the device charge at a measly 400mA and 1A for each of the charging ports. Plugging
+                in a 3A charger into the AC outlet gives me 1.75A of power, which is quite good since plugging that 
+                charger in a regular AC outlet provides the same amount of current. Looking at the waveform in the oscilliscope,
+                I notice that I just get an AC square wave. Performance wise, its reasonable as this would be fine with regular
+                loads that convert AC to DC, but will likely introduce more voltage ripple into the system. If I were looking 
+                to redo this project, I'd likely go with a better inverter and power electronics next time around for better 
+                USB charging performance.
+            </p>
             <br><br>
         </div>
     </section>
@@ -214,42 +306,6 @@
         </div>
     </section>
     <section class="accordion">
-        <input type="checkbox" name="collapse" id="handle4">
-        <div class="handle">
-            <label for="handle4">
-                <div class="preview-text">
-                    <p>3D Printed Shelf Clock</p>
-                </div>
-                <div class="preview-gradient"></div>
-                <div style="background-image: url(/images/projects/clockbanner.jpeg); background-size: 1200px;" class="repeat-image"></div>
-            </label>
-        </div>
-        <div class="content">
-            <img src="/images/projects/clock.jpeg">
-            <h4>Overview</h4>
-            <p>A 3D printed shelving unit with RGB LED's for time</p>
-            <h4>Programs and Libraries Used</h4>
-            <p>Arduino IDE (C++) using FastLED and ESP8266 Wireless Libraries</p>
-            <h4>Summary</h4>
-            <p>A version of another project created by DIYMachines on Youtube that I altered to support more lighting effects and
-                customization. Hardware-wise, this project is quite similar as they use the same 3D STL files, but the software has
-                been created from scratch to support web-server control. I programmed multiple lighting effects that the original
-                project did not include such as solid segments, gradients, fire, rain, and rainbow, with these effects also applying
-                to the spotlights, background, and clock. In the image above, I applied a blue to purple background with a solid clock
-                and spotlight pattern. More pictures are available in my GitHub repository below
-            </p>
-            <h4>Afterthoughts</h4>
-            <p>Many of the drilled holes in this project are not aligned properly, so there had to be a few modifications to remediate
-                this. I am also running this clock on 12v, with a buck converter stepping down the voltage to 5v. Under normal operations,
-                this won't be an issue, but if I fully load the shelf with solid white LED's, this would heat up the buck converters to
-                more than 90 degrees celsius with a heatsink on, so I added more buck converters to share the load. I would have gone
-                with a dedicated LED power supply instead, but concealing that would be much more difficult.
-            </p>
-            <a href="https://github.com/Winston-Lu/ESP8266-LED-Shelf" target="_blank" rel="noopener">Link to the code repository</a>
-            <br><br>
-        </div>
-    </section>
-    <section class="accordion">
         <input type="checkbox" name="collapse" id="handle5">
         <div class="handle">
             <label for="handle5">
@@ -261,6 +317,7 @@
             </label>
         </div>
         <div class="content">
+            <div style="height: 50px"></div>
             <h4>Overview</h4>
             <p>A general purpose Discord bot for administration, games, and image manipulation</p>
             <h4>Programs and Libraries Used</h4>
@@ -411,6 +468,7 @@
             </label>
         </div>
         <div class="content">
+            <div style="height: 50px"></div>
             <h4>Overview</h4>
             <p>A bot that can generate fake or use real emails and passwords to fill a phishing site with fake credentials.</p>
             <h4>Programs and Libraries Used</h4>
@@ -446,22 +504,10 @@
 </body>
 <footer class="footer" id="footer">
     <div class="contact">
-        <div class="contact_card">
-            <img src="/images/icons/mail.png" id="logo">
-            <div class="divider"></div>
-            <div class="content"><a href="mailto:wlu2268@gmail.com">Email me</a></div>
-        </div>
-        <div class="contact_card">
-            <img src="/images/icons/git.png" id="logo">
-            <div class="divider"></div>
-            <div class="content"><a href="https://github.com/Winston-Lu" target="_blank">Github</a></div>
-        </div>
-        <div class="contact_card">
-            <img src="/images/icons/linkedin.png" id="logo">
-            <div class="divider"></div>
-            <div class="content"><a href="https://www.linkedin.com/in/winstonlu1/" target="_blank">Linkedin</a></div>
-        </div>
+        <div class="circle"><a href="https://github.com/Winston-Lu" target="_blank" rel="noopener noreferrer"><img src="/images/logo-github.svg"></img></a></div>
+        <div class="circle"><a href="https://www.linkedin.com/in/winstonlu1/" target="_blank" rel="noopener noreferrer"><img src="/images/logo-linkedin.svg"></img></a></div>
+        <div class="circle"><a href="mailto:wlu2268@gmail.com" target="_blank" rel="noopener noreferrer"><img src="/images/mail-outline.svg"></img></a></div>
     </div>
+    <p>Winston Lu @ 2023</p>
 </footer>
-<script src="/js/home.js"></script>
 </html>
