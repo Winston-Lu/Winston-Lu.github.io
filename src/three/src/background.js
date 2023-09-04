@@ -112,10 +112,10 @@ bloomLayer.set( BLOOM_SCENE );
 function init() {
   //create materials
   let buildingMaterial = new THREE.MeshStandardMaterial({
-    color:0x020202,
+    color:0x060404,
     wireframe:false,
     flatShading:true,
-    side:THREE.DoubleSide,
+    side:THREE.FrontSide,
     roughness:0.8});
   darkMaterial = buildingMaterial; //for bloom
   const windowMaterial = new THREE.MeshStandardMaterial( {
@@ -200,7 +200,7 @@ function init() {
   bloomComposer = new EffectComposer( renderer );
   bloomComposer.renderToScreen = false;
   bloomComposer.addPass( renderScene );
-  bloomComposer.addPass( bloomPass );
+  // bloomComposer.addPass( bloomPass ); //too much of a performance hit
 
   const finalPass = new ShaderPass(
     new THREE.ShaderMaterial( {
@@ -272,7 +272,7 @@ window.addEventListener('touchmove', onDocumentTouchMove, false );
 
 //Scene elements
 let ambientLight = new THREE.AmbientLight(0xFFFFFF, 4);
-let lightFront = new THREE.SpotLight(0x1A1313, 20, 10000);
+let lightFront = new THREE.SpotLight(0x3A3353, 20, 10000); //with bloom: 0x1A1313
 
 lightFront.rotation.x = 45 * Math.PI / 180;
 lightFront.rotation.z = -45 * Math.PI / 180;
