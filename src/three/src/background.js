@@ -1,22 +1,22 @@
 import * as THREE from "./three.module.min.js";
-import { UnrealBloomPass } from './UnrealBloomPass.js';
+// import { UnrealBloomPass } from './UnrealBloomPass.js';
 import { EffectComposer } from './EffectComposer.js';
 import { RenderPass } from './RenderPass.js';
-import { ShaderPass } from './ShaderPass.js';
+// import { ShaderPass } from './ShaderPass.js';
 //
-const fragShader = `
-uniform sampler2D baseTexture;
-uniform sampler2D bloomTexture;
-varying vec2 vUv;
-void main() {
-  gl_FragColor = ( texture2D( baseTexture, vUv ) + vec4( 1.0 ) * texture2D( bloomTexture, vUv ) );
-}`;
-const vertShader = `
-varying vec2 vUv;
-void main() {
-  vUv = uv;
-  gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-}`;
+// const fragShader = `
+// uniform sampler2D baseTexture;
+// uniform sampler2D bloomTexture;
+// varying vec2 vUv;
+// void main() {
+//   gl_FragColor = ( texture2D( baseTexture, vUv ) + vec4( 1.0 ) * texture2D( bloomTexture, vUv ) );
+// }`;
+// const vertShader = `
+// varying vec2 vUv;
+// void main() {
+//   vUv = uv;
+//   gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+// }`;
 const materials = {};
 let darkMaterial;
 
@@ -104,10 +104,10 @@ const generateMatrixBuilding = function () {
 }();
 //build buildings
 let composer;
-let bloomComposer;
+// let bloomComposer;
 const ENTIRE_SCENE = 0, BLOOM_SCENE = 1;
-const bloomLayer = new THREE.Layers();
-bloomLayer.set( BLOOM_SCENE );
+// const bloomLayer = new THREE.Layers();
+// bloomLayer.set( BLOOM_SCENE );
 
 function init() {
   //create materials
@@ -121,6 +121,7 @@ function init() {
   const windowMaterial = new THREE.MeshStandardMaterial( {
     color: 0x332215, 
     emissive: 0x332215,
+    emissiveIntensity: 3,
     side: THREE.FrontSide
   });
 
@@ -131,7 +132,7 @@ function init() {
   //instancing for performance 
   const windowGeometry = new THREE.PlaneGeometry( 0.1, 0.1 );
   const windowObject = new THREE.InstancedMesh( windowGeometry, windowMaterial , gridSize*gridSize*12*numWindowSpawn); //max number of windows
-  windowObject.layers.enable( BLOOM_SCENE );
+  // windowObject.layers.enable( BLOOM_SCENE );
 
   const buildingGeometry = new THREE.BoxGeometry(1,1,1);
   const buildingObject = new THREE.InstancedMesh( buildingGeometry, buildingMaterial , gridSize*gridSize); //max number of buildings
@@ -192,32 +193,32 @@ function init() {
 
   //Bloom effect
   const renderScene = new RenderPass( scene, camera );
-  const bloomPass = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85 );
-  bloomPass.threshold = 0.05;
-  bloomPass.strength = 3;
-  bloomPass.radius = 0.8;
+  // const bloomPass = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85 );
+  // bloomPass.threshold = 0.05;
+  // bloomPass.strength = 3;
+  // bloomPass.radius = 0.8;
 
-  bloomComposer = new EffectComposer( renderer );
-  bloomComposer.renderToScreen = false;
-  bloomComposer.addPass( renderScene );
+  // bloomComposer = new EffectComposer( renderer );
+  // bloomComposer.renderToScreen = false;
+  // bloomComposer.addPass( renderScene );
   // bloomComposer.addPass( bloomPass ); //too much of a performance hit
 
-  const finalPass = new ShaderPass(
-    new THREE.ShaderMaterial( {
-      uniforms: {
-        baseTexture: { value: null },
-        bloomTexture: { value: bloomComposer.renderTarget2.texture }
-      },
-      vertexShader: vertShader,
-      fragmentShader: fragShader,
-      defines: {}
-    } ), 'baseTexture'
-  );
-  finalPass.needsSwap = true;
+  // const finalPass = new ShaderPass(
+  //   new THREE.ShaderMaterial( {
+  //     uniforms: {
+  //       baseTexture: { value: null },
+  //       bloomTexture: { value: bloomComposer.renderTarget2.texture }
+  //     },
+  //     vertexShader: vertShader,
+  //     fragmentShader: fragShader,
+  //     defines: {}
+  //   } ), 'baseTexture'
+  // );
+  // finalPass.needsSwap = true;
 
   composer = new EffectComposer( renderer );
   composer.addPass( renderScene );
-  composer.addPass( finalPass );
+  // composer.addPass( finalPass );
 
   //Random particles
   let gmaterial = new THREE.MeshToonMaterial({color:0xFFFF00, side:THREE.DoubleSide});
@@ -271,7 +272,7 @@ window.addEventListener('touchstart', onDocumentTouchStart, false );
 window.addEventListener('touchmove', onDocumentTouchMove, false );
 
 //Scene elements
-let ambientLight = new THREE.AmbientLight(0xFFFFFF, 4);
+let ambientLight = new THREE.AmbientLight(0xFFFFFF, 10);
 let lightFront = new THREE.SpotLight(0x3A3353, 20, 10000); //with bloom: 0x1A1313
 
 lightFront.rotation.x = 45 * Math.PI / 180;
@@ -339,18 +340,18 @@ let animate = function() {
   camera.lookAt(city.position);
   renderer.render( scene, camera );  
 
-  scene.traverse( darkenNonBloomed );
-  bloomComposer.render();
+  // scene.traverse( darkenNonBloomed );
+  // bloomComposer.render();
   scene.traverse( restoreMaterial );
   composer.render();
 }
 
-function darkenNonBloomed( obj ) {
-  if ( obj.isMesh && bloomLayer.test( obj.layers ) === false ) {
-    materials[ obj.uuid ] = obj.material;
-    obj.material = darkMaterial;
-  }
-}
+// function darkenNonBloomed( obj ) {
+  // if ( obj.isMesh && bloomLayer.test( obj.layers ) === false ) {
+  //   materials[ obj.uuid ] = obj.material;
+  //   obj.material = darkMaterial;
+  // }
+// }
 function restoreMaterial( obj ) {
   if ( materials[ obj.uuid ] ) {
     obj.material = materials[ obj.uuid ];
